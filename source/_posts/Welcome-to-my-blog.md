@@ -1,7 +1,8 @@
 ---
 title: First blog 
 date: 2026-01-03 18:00:00
-categories: [日常］
+tags: [生活，碎碎念]
+categories: [日常]
 ---
 # blog部署日记
 这是我第一个blog，在AI的帮助下，我成功的部署了，如你所见，blog页面依旧比较原始。相信我，它会慢慢发展起来的。
