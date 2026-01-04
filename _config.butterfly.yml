@@ -1,0 +1,107 @@
+# ====================================
+# Butterfly 主题定制配置文件
+# ====================================
+
+# ------------------------------------
+# 1. 导航栏设置 (Menu)
+# 格式：显示名称: 路径 || 图标 (图标去 FontAwesome 找)
+# ------------------------------------
+menu:
+  首页: / || fa-solid fa-home
+  归档: /archives/ || fa-solid fa-archive
+  标签: /tags/ || fa-solid fa-tags
+  分类: /categories/ || fa-solid fa-folder-open
+  关于: /about/ || fa-solid fa-user
+
+# ------------------------------------
+# 2. 网站视觉与背景 (Visuals)
+# ------------------------------------
+# 整体背景图 (可以填图片链接，也可以填颜色代码)
+background: url(https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop)
+
+# 顶部大图 (Banner) - 当没有设置文章封面时显示的默认图
+index_img: https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop
+
+# ------------------------------------
+# 3. 侧边栏个人信息 (Profile)
+# ------------------------------------
+avatar:
+  # 把下面的链接换成你自己的头像链接
+  img: https://i.pinimg.com/564x/24/c7/22/24c7224e0388d74880c85c2c9d78e715.jpg
+  # 头像是否旋转 (true 为旋转，类似 mitsea 的效果)
+  effect: true
+
+# 侧边栏的社交图标
+social:
+  Github: https://github.com/你的用户名 || fab fa-github || #333
+  Email: mailto:你的邮箱@gmail.com || fa-solid fa-envelope || #FF0000
+
+# ------------------------------------
+# 4. 首页封面 (Home Cover)
+# 类似 mitsea 首页那个全屏的大图和打字效果
+# ------------------------------------
+cover:
+  index_enable: true
+  position: both
+
+# ------------------------------------
+# 5. 打字效果 (Subtitle)
+# ------------------------------------
+subtitle:
+  enable: true
+  effect: true
+  # 每次刷新页面会随机显示下面的一句话
+  sub:
+    - 既然选择了远方，便只顾风雨兼程。
+    - 保持热爱，奔赴山海。
+    - Coding changes the world.
+
+# ------------------------------------
+# 6. 文章卡片设置 (Post Cards)
+# ------------------------------------
+# 首页文章卡片的封面图位置 (left/right/both)
+cover_position: left
+
+# ------------------------------------
+# 7. 侧边栏设置 (Aside)
+# ------------------------------------
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true # 手机端是否显示
+  position: right # 侧边栏在右侧
+  card_author:
+    enable: true
+    description: "这是一个热爱技术的博主" # 你的个人简介
+  card_announcement:
+    enable: true
+    content: "欢迎来到我的博客！" # 公告栏内容
+
+# ------------------------------------
+# 8. 页脚设置 (Footer)
+# ------------------------------------
+footer:
+  owner:
+    enable: true
+    since: 2024 # 建站年份
+  copyright: true
+
+# ------------------------------------
+# 9. 杂项功能
+# ------------------------------------
+# 返回顶部按钮
+rightside_item_order:
+  - hide-aside
+  - toc
+  - chat
+  - comment
+  - darkmode
+
+# 是否显示阅读进度条
+scroll_down_effects: true
+
+# 图片懒加载 (提升速度)
+lazyload:
+  enable: true
+  field: site
