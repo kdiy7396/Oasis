@@ -17,9 +17,7 @@ categories: [日常]
 
 ## 让我们开始吧
 ### 1.本地搭建blog
-```markdown
 [!abstract]CMD或PowerShell执行命令安装hexo
-```
 ``` bash
 npm install -g hexo-cli
 
