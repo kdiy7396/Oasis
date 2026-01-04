@@ -1,107 +1,120 @@
 # ====================================
-# Butterfly 主题定制配置文件
+# Butterfly 主题定制配置文件（优化美化版）
 # ====================================
 
 # ------------------------------------
 # 1. 导航栏设置 (Menu)
-# 格式：显示名称: 路径 || 图标 (图标去 FontAwesome 找)
 # ------------------------------------
 menu:
-  首页: / || fa-solid fa-home
-  归档: /archives/ || fa-solid fa-archive
-  标签: /tags/ || fa-solid fa-tags
-  分类: /categories/ || fa-solid fa-folder-open
-  关于: /about/ || fa-solid fa-user
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  关于: /about/ || fas fa-user
 
 # ------------------------------------
 # 2. 网站视觉与背景 (Visuals)
 # ------------------------------------
-# 整体背景图 (可以填图片链接，也可以填颜色代码)
-background: url(https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop)
+# 整体背景图（梦幻紫色调景观，更符合 Butterfly 风格）
+background: url(https://img.freepik.com/free-photo/abstract-fantasy-landscape-with-color-year-purple-tones_23-2151394144.jpg?semt=ais_hybrid&w=740&q=80)
 
-# 顶部大图 (Banner) - 当没有设置文章封面时显示的默认图
-index_img: https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop
+# 首页/默认文章顶部大图
+index_img: https://thumbs.dreamstime.com/b/beautiful-nature-background-violet-wallpaper-lavender-flowers-summer-sunset-landscape-blue-sky-clouds-aroma-field-summertime-photo-188927660.jpg
+
+# 文章卡片封面位置
+cover_position: left
 
 # ------------------------------------
 # 3. 侧边栏个人信息 (Profile)
 # ------------------------------------
 avatar:
-  # 把下面的链接换成你自己的头像链接
-  img: https://i.pinimg.com/564x/24/c7/22/24c7224e0388d74880c85c2c9d78e715.jpg
-  # 头像是否旋转 (true 为旋转，类似 mitsea 的效果)
-  effect: true
+  img: https://thumbs.dreamstime.com/b/anime-girl-long-hair-headphones-leans-windowsill-smiling-background-filled-bright-stars-against-dark-night-349007916.jpg  # 可爱动漫女孩头像
+  effect: true  # 旋转效果
 
-# 侧边栏的社交图标
 social:
-  Github: https://github.com/你的用户名 || fab fa-github || #333
-  Email: mailto:你的邮箱@gmail.com || fa-solid fa-envelope || #FF0000
+  Github: https://github.com/你的用户名 || fab fa-github || #333333
+  Email: mailto:你的邮箱@gmail.com || fas fa-envelope || #ea6f5a
+  # 可添加更多，如 Twitter: https://twitter.com/xxx || fab fa-twitter || #1DA1F2
 
 # ------------------------------------
-# 4. 首页封面 (Home Cover)
-# 类似 mitsea 首页那个全屏的大图和打字效果
+# 4. 首页封面 (Home Cover) - 全屏大图 + 文字
 # ------------------------------------
 cover:
   index_enable: true
-  position: both
+  position: both  # 左右都显示
+  height: full  # 全屏高度（可选）
 
 # ------------------------------------
-# 5. 打字效果 (Subtitle)
+# 5. 打字效果 (Subtitle) - 首页副标题
 # ------------------------------------
 subtitle:
   enable: true
   effect: true
-  # 每次刷新页面会随机显示下面的一句话
+  # 随机显示的励志文字
   sub:
     - 既然选择了远方，便只顾风雨兼程。
     - 保持热爱，奔赴山海。
     - Coding changes the world.
+    - 探索未知，创造未来。
+    - 每一次敲代码，都是在改变世界。
 
 # ------------------------------------
-# 6. 文章卡片设置 (Post Cards)
-# ------------------------------------
-# 首页文章卡片的封面图位置 (left/right/both)
-cover_position: left
-
-# ------------------------------------
-# 7. 侧边栏设置 (Aside)
+# 6. 侧边栏设置 (Aside) - 丰富小部件
 # ------------------------------------
 aside:
   enable: true
   hide: false
   button: true
-  mobile: true # 手机端是否显示
-  position: right # 侧边栏在右侧
+  mobile: true
+  position: right
   card_author:
     enable: true
-    description: "这是一个热爱技术的博主" # 你的个人简介
+    description: "这是一个热爱技术的博主，专注于分享知识与成长心得。"
   card_announcement:
     enable: true
-    content: "欢迎来到我的博客！" # 公告栏内容
+    content: 这是一个用 Hexo + Butterfly 搭建的个人博客，欢迎交流！
+  card_recent_post:
+    enable: true   # 新增：最近文章
+    limit: 5
+  card_tags:
+    enable: true   # 新增：标签云
+    limit: 30
+    color: true
 
 # ------------------------------------
-# 8. 页脚设置 (Footer)
+# 7. 页脚设置 (Footer)
 # ------------------------------------
 footer:
   owner:
     enable: true
-    since: 2024 # 建站年份
+    since: 2024
   copyright: true
+  visitor:
+    enable: true   # 新增：显示访问量统计（需 Busuanzi 支持，已内置）
 
 # ------------------------------------
-# 9. 杂项功能
+# 8. 杂项功能（更多美化与体验优化）
 # ------------------------------------
-# 返回顶部按钮
-rightside_item_order:
-  - hide-aside
-  - toc
-  - chat
-  - comment
-  - darkmode
-
-# 是否显示阅读进度条
-scroll_down_effects: true
-
-# 图片懒加载 (提升速度)
 lazyload:
   enable: true
   field: site
+
+scroll_down_effects: true  # 阅读进度条
+
+darkmode:
+  enable: true  # 启用暗黑模式切换按钮
+
+# 返回顶部等右侧按钮顺序
+rightside:
+  enable: true
+  item_order:
+    - toc
+    - readmode
+    - darkmode
+    - translate
+
+# 可选：如果想添加粒子背景、雪花等高级特效，需要额外 inject JS（参考官方文档）
+# inject:
+#   bottom:
+#     - <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+#     - <script>/* 粒子配置代码 */</script>
