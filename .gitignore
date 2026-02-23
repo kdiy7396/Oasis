@@ -6,6 +6,3 @@ node_modules/
 public/
 .deploy*/
 _multiconfig.yml
-# Obsidian vault 配置（含插件、密钥等）
-.obsidian/
-source/_posts/.obsidian/
