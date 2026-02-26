@@ -1,5 +1,5 @@
 ---
-title: vps
+title: Oracle Cloud vm 优化
 date: 2026-02-23 11:00:00
 tags:
   - 优化
@@ -79,7 +79,9 @@ sudo vi /etc/dnf/dnf.conf
 [main]
 gpgcheck=1 
 installonly_limit=2
-clean_requirements_on_remove=True # 卸载包时自动删除不再需要的依赖 fastestmirror=True # 让 dnf 自动找最快的镜像源（虽然 OCI 内部通常已经很快了） max_parallel_downloads=10 # 允许同时下载 10 个包，显著提升更新安装速度
+clean_requirements_on_remove=True 
+# 卸载包时自动删除不再需要的依赖 fastestmirror=True # 让 dnf 自动找最快的镜像源（虽然 OCI 内部通常已经很快了） max_parallel_downloads=10 # 允许同时下载 10 个包，显著提升更新安装速度
+skip_if_unavailable=True # 不因某个非核心仓库链接失效阻止继续更新
 ```
 ### 三、小内存Swap优化
 ```bash
@@ -120,3 +122,42 @@ sudo systemctl disable kdump
 sudo systemctl stop cockpit.socket
 sudo systemctl disable cockpit.socket
 ```
+### 五、常见问题
+#### 问题描述
+##### 镜像失效
+- Rocky Linux 9 - SIG Cloud Common                                           394  B/s |  79  B     00:00
+Error: Failed to download metadata for repo 'cloud-common': Cannot prepare internal mirrorlist: No URLs in mirrorlist
+
+##### 排查方法
+- [ ] **仓库配置错误**
+ ```bash
+ls /etc/yum.repos.d/
+ Rocky-SIG-Cloud-Common.repo  epel-cisco-openh264.repo  epel.repo         oraclelinux-addons.repo  rocky-devel.repo   rocky.repo  Rocky-SIG-Cloud-Kernel.repo  epel-testing.repo         epel.repo.rpmnew  rocky-addons.repo        rocky-extras.repo 
+# 编辑配置
+sudo nano /etc/yum.repos.d/Rocky-SIG-Cloud-Common.repo
+# 注释掉 [cloud-common]-"mirrorlist"行和[cloud-common-testing]-"baseurl"行；取消注释 [cloud-common]-"baseurl"
+ ```
+ ```conf
+ [cloud-common]
+name=Rocky Linux $releasever - SIG Cloud Common
+mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=rocky-sig-cloud-common-$releasever
+#baseurl=http://dl.rockylinux.org/$sigcontentdir/$releasever/cloud/$basearch/cloud-common/
+gpgcheck=1
+enabled=1
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-SIG-Cloud
+
+[cloud-common-testing]
+name=Rocky Linux $releasever - SIG Cloud Common
+baseurl=https://yumrepofs.build.resf.org/v1/projects/15016370-1410-4459-a1a2-a1576041fd19/repo/cloud-common/$basearch/
+gpgcheck=1
+enabled=0
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-SIG-Cloud
+ ```
+ - [ ] 清理、重建缓存
+  ```bash
+  sudo dnf clean all
+  sudo dnf makecache
+  sudo dnf update
+  ```
